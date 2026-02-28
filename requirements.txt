@@ -1,4 +1,7 @@
-click==8.1.8 #updated from 8.1.7 to 8.1.8 to resolve dependency conflicts with other packages
+# BUG FIX: Added missing packages required to run the project.
+# Original file was missing several critical dependencies that caused import/runtime failures.
+
+click==8.1.8 # updated from 8.1.7 to 8.1.8 to resolve dependency conflicts with other packages
 
 
 # Keep crewai at version 0.130.0
@@ -6,9 +9,19 @@ click==8.1.8 #updated from 8.1.7 to 8.1.8 to resolve dependency conflicts with o
 # Only change crewai version if there are critical dependency conflicts that cannot be resolved by other means
 
 
-crewai==0.130.0 
+crewai==0.130.0
 crewai-tools==0.47.1
 fastapi==0.110.3
+
+# BUG FIX: Added uvicorn — required to serve the FastAPI application.
+uvicorn
+
+# BUG FIX: Added python-dotenv — required by agents.py and tools.py to load
+python-dotenv
+
+# Replaced pypdf with pymupdf4llm — outputs LLM-optimised markdown with tables preserved.
+pymupdf4llm
+
 google-ai-generativelanguage
 google-api-core
 google-api-python-client
@@ -30,7 +43,9 @@ langsmith
 numpy
 oauthlib
 onnxruntime
-openai
+
+# BUG FIX: Removed `openai` — this project uses Google Gemini, not OpenAI.
+
 opentelemetry-api
 opentelemetry-exporter-otlp-proto-common
 opentelemetry-exporter-otlp-proto-grpc
@@ -47,3 +62,7 @@ pillow
 protobuf
 pydantic
 pydantic_core
+python-multipart
+
+# Queue worker DB — SQLite via SQLAlchemy (no external server required)
+sqlalchemy
