@@ -31,10 +31,6 @@ app = FastAPI(
 )
 
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
 def _task_output(task: Task, model_class):
     """Safely extract a task's Pydantic output, falling back to its raw text."""
     if task.output is None:
